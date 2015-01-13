@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_sales_order_view>
+        <reference name="sales_order_tabs">
+            <action method="addTab">
+                <name>space48_bpf</name>
+                <block>space48_bpf/adminhtml_sales_order_view_tab_bpf</block>
+            </action>
+        </reference>
+    </adminhtml_sales_order_view>
+</layout>

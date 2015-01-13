@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Space48_BarclaysPartnerFinance>
+            <version>0.0.8</version>
+        </Space48_BarclaysPartnerFinance>
+    </modules>
+    
+    <!-- GLOBAL -->
+    <global>
+        
+        <!-- models -->
+        <models>
+            <space48_bpf>
+                <class>Space48_BarclaysPartnerFinance_Model</class>
+                <resourceModel>space48_bpf_resource</resourceModel>
+            </space48_bpf>
+            <space48_bpf_resource>
+                <class>Space48_BarclaysPartnerFinance_Model_Resource</class>
+                <entities>
+                    <application><table>space48_bpf_application</table></application>
+                    <application_snag><table>space48_bpf_application_snag</table></application_snag>
+                    <application_address><table>space48_bpf_application_address</table></application_address>
+                    <application_checklist><table>space48_bpf_application_checklist</table></application_checklist>
+                </entities>
+            </space48_bpf_resource>
+        </models>
+        
+        <!-- resources -->
+        <resources>
+            <space48_bpf_setup>
+                <setup>
+                    <module>Space48_BarclaysPartnerFinance</module>
+                </setup>
+                <connection><use>core_setup</use></connection>
+            </space48_bpf_setup>
+            <space48_bpf_write>
+                <connection><use>core_write</use></connection>
+            </space48_bpf_write>
+            <space48_bpf_read>
+                <connection><use>core_read</use></connection>
+            </space48_bpf_read>
+        </resources>
+        
+        <!-- blocks -->
+        <blocks>
+            <space48_bpf>
+                <class>Space48_BarclaysPartnerFinance_Block</class>
+            </space48_bpf>
+        </blocks>
+        
+        <!-- helpers -->
+        <helpers>
+            <space48_bpf>
+                <class>Space48_BarclaysPartnerFinance_Helper</class>
+            </space48_bpf>
+        </helpers>
+        
+        <!-- events -->
+        <events>
+            
+            <!-- (bpf) soap call: new finance application event -->
+            <space48_bpf_new_application>
+                <observers>
+                    <space48_bpf_new_application_observer>
+                        <class>space48_bpf/observer_soap</class>
+                        <method>newFinanceApplication</method>
+                    </space48_bpf_new_application_observer>
+                </observers>
+            </space48_bpf_new_application>
+            
+            <!-- (bpf) soap call: proposal enquiry -->
+            <space48_bpf_proposal_enquiry>
+                <observers>
+                    <space48_bpf_proposal_enquiry_observer>
+                        <class>space48_bpf/observer_soap</class>
+                        <method>proposalEnquiry</method>
+                    </space48_bpf_proposal_enquiry_observer>
+                </observers>
+            </space48_bpf_proposal_enquiry>
+            
+            <!-- (bpf) soap call: notification batch -->
+            <space48_bpf_notification>
+                <observers>
+                    <space48_bpf_notification_observer>
+                        <class>space48_bpf/observer_soap</class>
+                        <method>notification</method>
+                    </space48_bpf_notification_observer>
+                </observers>
+            </space48_bpf_notification>
+            
+            <!-- after proposal enquiry -->
+            <space48_bpf_proposal_enquiry_after>
+                <observers>
+                    <space48_bpf_proposal_enquiry_after_observer>
+                        <class>space48_bpf/observer_application</class>
+                        <method>onProposalEnquiry</method>
+                    </space48_bpf_proposal_enquiry_after_observer>
+                </observers>
+            </space48_bpf_proposal_enquiry_after>
+            
+            <!-- after bpf soap callback -->
+            <space48_bpf_soap_callback>
+                <observers>
+                    <space48_bpf_soap_callback_observer>
+                        <class>space48_bpf/observer_application</class>
+                        <method>onSoapCallback</method>
+                    </space48_bpf_soap_callback_observer>
+                </observers>
+            </space48_bpf_soap_callback>
+            
+            <!-- after finance application status change -->
+            <space48_bpf_proposal_enquiry_update_status_after>
+                <observers>
+                    <!-- bpf email: application accepted -->
+                    <space48_bpf_send_accepted_email>
+                        <class>space48_bpf/observer_email</class>
+                        <method>sendApplicationAcceptedEmail</method>
+                    </space48_bpf_send_accepted_email>
+                    
+                    <!-- bpf email: application referred -->
+                    <space48_bpf_send_referred_email>
+                        <class>space48_bpf/observer_email</class>
+                        <method>sendApplicationReferredEmail</method>
+                    </space48_bpf_send_referred_email>
+                    
+                    <!-- bpf email: application declined -->
+                    <space48_bpf_send_declined_email>
+                        <class>space48_bpf/observer_email</class>
+                        <method>sendApplicationDeclinedEmail</method>
+                    </space48_bpf_send_declined_email>
+                    
+                    <!-- bpf email: application cancelled -->
+                    <space48_bpf_send_cancelled_email>
+                        <class>space48_bpf/observer_email</class>
+                        <method>sendApplicationCancelledEmail</method>
+                    </space48_bpf_send_cancelled_email>
+                </observers>
+            </space48_bpf_proposal_enquiry_update_status_after>
+            
+            <!-- allows us to determine whether a status can be updated when response from jde comes in -->
+            <silentnight_orderupdate_can_update_status>
+                <observers>
+                    <!-- silentnight order update: can update status? -->
+                    <space48_orderupdate_can_update_status_observer>
+                        <class>space48_bpf/observer_silentnight_orderupdate</class>
+                        <method>canUpdateStatus</method>
+                    </space48_orderupdate_can_update_status_observer>
+                </observers>
+            </silentnight_orderupdate_can_update_status>
+            
+            <!-- allows us to set a custom status when an order has been dispatched -->
+            <silentnight_orderupdate_before_order_complete>
+                <observers>
+                    <!-- silentnight order update: what status to change to  -->
+                    <space48_orderupdate_before_order_complete_observer>
+                        <class>space48_bpf/observer_silentnight_orderupdate</class>
+                        <method>beforeOrderComplete</method>
+                    </space48_orderupdate_before_order_complete_observer>
+                </observers>
+            </silentnight_orderupdate_before_order_complete>
+        </events>
+        
+        <!-- templates -->
+        <template>
+            <email>
+                <!-- finance accepted email template -->
+                <payment_space48_bpf_method_accepted_email_template>
+                    <label>Finance Accepted Email</label>
+                    <file>space48_bpf/accepted.html</file>
+                    <type>html</type>
+                </payment_space48_bpf_method_accepted_email_template>
+                
+                <!-- finance referred email template -->
+                <payment_space48_bpf_method_referred_email_template>
+                    <label>Finance Referred Email</label>
+                    <file>space48_bpf/referred.html</file>
+                    <type>html</type>
+                </payment_space48_bpf_method_referred_email_template>
+                
+                <!-- finance declined email template -->
+                <payment_space48_bpf_method_declined_email_template>
+                    <label>Finance Declined Email</label>
+                    <file>space48_bpf/declined.html</file>
+                    <type>html</type>
+                </payment_space48_bpf_method_declined_email_template>
+                
+                <!-- finance cancelled email template -->
+                <payment_space48_bpf_method_cancelled_email_template>
+                    <label>Finance Cancelled Email</label>
+                    <file>space48_bpf/cancelled.html</file>
+                    <type>html</type>
+                </payment_space48_bpf_method_cancelled_email_template>
+            </email>
+        </template>
+    </global>
+    
+    <!-- ADMIN -->
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Space48_BarclaysPartnerFinance_Adminhtml before="Mage_Adminhtml">Space48_BarclaysPartnerFinance_Adminhtml</Space48_BarclaysPartnerFinance_Adminhtml>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    
+    <!-- ADMINHTML -->
+    <adminhtml>
+        <!-- layout -->
+        <layout>
+            <updates>
+                <space48_bpf>
+                    <file>space48/bpf.xml</file>
+                </space48_bpf>
+            </updates>
+        </layout>
+        
+        <!-- events -->
+        <events>
+            <!-- to add a button to sales order view -->
+            <adminhtml_widget_container_html_before>
+                <observers>
+                    <space48_bpf_add_submit_enquiry_button>
+                        <class>space48_bpf/observer_adminhtml_sales_order</class>
+                        <method>addSubmitEnquiryButton</method>
+                    </space48_bpf_add_submit_enquiry_button>
+                    <space48_bpf_add_send_notification_button>
+                        <class>space48_bpf/observer_adminhtml_sales_order</class>
+                        <method>addDispatchNotificationButton</method>
+                    </space48_bpf_add_send_notification_button>
+                </observers>
+            </adminhtml_widget_container_html_before>
+        </events>
+    </adminhtml>
+    
+    <!-- FRONTEND -->
+    <frontend>
+        <!-- layout -->
+        <layout>
+            <updates>
+                <space48_bpf>
+                    <file>space48/bpf.xml</file>
+                </space48_bpf>
+            </updates>
+        </layout>
+        
+        <!-- routers -->
+        <routers>
+            <space48_bpf>
+                <use>standard</use>
+                <args>
+                    <module>Space48_BarclaysPartnerFinance</module>
+                    <frontName>bpf</frontName>
+                </args>
+            </space48_bpf>
+        </routers>
+    </frontend>
+    
+    <!-- DEFAULT -->
+    <default>
+        <payment>
+            <space48_bpf_method>
+                <model>space48_bpf/payment_method</model>
+                <active>1</active>
+                <order_status>bpf_awaiting_customer</order_status>
+                <title>Barclays Partner Finance</title>
+                <min>300</min>
+                <asset_type>BD2</asset_type>
+                <payment_action>sale</payment_action>
+                <allowspecific>0</allowspecific>
+                <login_name>SilentnightEF@icet1</login_name>
+                <password>Passw0rd</password>
+                <redirect_url>https://iceua1v3.barclays-loans.com/eFinance/eFinance.aspx</redirect_url>
+                <sort_order>1</sort_order>
+            </space48_bpf_method>
+        </payment>
+    </default>
+</config>

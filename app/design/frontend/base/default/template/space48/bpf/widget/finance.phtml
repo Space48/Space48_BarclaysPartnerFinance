@@ -1,0 +1,12 @@
+<?php if ( $this->canShow() ) : ?>
+    <div class="finance-widget clear">
+        <?php if ( $html = $this->getStaticBlockHtml() ) : ?>
+            <?php echo $html; ?>
+        <?php else: ?>
+            <h4>Finance options available</h4>
+            <p class="apr"><strong>0% APR REPRESENTATIVE</strong></p>
+            <p class="available">Available on order values greater than &pound;500</p>
+            <a class="button" href="/finance" title="Finance Options">Find out more</a>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>

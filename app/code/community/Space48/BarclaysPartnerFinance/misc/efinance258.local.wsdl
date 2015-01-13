@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.barclays-partnerfinance.com/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.barclays-partnerfinance.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsdl:types>
+        <s:schema elementFormDefault="qualified" targetNamespace="http://www.barclays-partnerfinance.com/">
+            <s:import namespace="http://microsoft.com/wsdl/types/" />
+            <s:simpleType name="String2to50">
+                <s:restriction base="s:string">
+                    <s:minLength value="2" />
+                    <s:maxLength value="50" />
+                </s:restriction>
+            </s:simpleType>
+            <s:element name="SubmitNewApplication">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="newApplicationData" type="tns:NewApplicationData" />
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="NewApplicationData">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="UserCredentials" type="tns:UserCredentials" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Proposal" type="tns:Proposal" />
+                    <s:element minOccurs="0" maxOccurs="unbounded" name="Goods" type="tns:TypeOfGoods" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Customer" type="tns:Customer" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Address" type="tns:Address" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="UserCredentials">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="Proposal">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="ProposalTypeCode" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="InterestRateType" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="InterestRate" type="s:decimal" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Term" type="s:short" />
+                    <s:element minOccurs="0" maxOccurs="1" name="DeferralPeriod" type="s:short" />
+                    <s:element minOccurs="0" maxOccurs="1" name="ClientReference" type="s:string" />
+                    <s:element minOccurs="1" maxOccurs="1" name="CashPrice" type="s:decimal" />
+                    <s:element minOccurs="1" maxOccurs="1" name="Deposit" type="s:decimal" />
+                    <s:element minOccurs="1" maxOccurs="1" name="ThirdPartyCharge" type="s:decimal" />
+                    <s:element minOccurs="0" maxOccurs="1" name="ProductTermIdentifier" type="s:int" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Instalment" type="s:decimal" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="TypeOfGoods">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+                    <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:short" />
+                </s:sequence>
+                <s:attribute name="Type" type="s:string" />
+            </s:complexType>
+            <s:complexType name="Customer">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Forename" type="s:string" />
+                    <s:element minOccurs="1" maxOccurs="1" name="Initial" nillable="true" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Surname" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="Address">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="HouseNumber" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="HouseName" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Flat" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Street" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="District" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Town" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="County" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Postcode" type="s:string" />
+                </s:sequence>
+            </s:complexType>
+            <s:element name="SubmitNewApplicationResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="SubmitNewApplicationResult" type="tns:NewApplicationDataResponse" />
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="NewApplicationDataResponse">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="Errors" type="tns:Errors" />
+                    <s:element minOccurs="1" maxOccurs="1" name="Token" type="s1:guid" />
+                    <s:element minOccurs="1" maxOccurs="1" name="ProposalID" type="s:int" />
+                    <s:element minOccurs="0" maxOccurs="1" name="ClientReference" type="s:string" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="Errors">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="ErrorDetails" type="tns:ArrayOfErrorDetail" />
+                </s:sequence>
+                <s:attribute name="IsError" type="s:boolean" use="required" />
+            </s:complexType>
+            <s:complexType name="ArrayOfErrorDetail">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="unbounded" name="ErrorDetail" nillable="true" type="tns:ErrorDetail" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="ErrorDetail">
+                <s:attribute name="Code" type="s:short" use="required" />
+                <s:attribute name="Message" type="s:string" />
+            </s:complexType>
+            <s:element name="SubmitNewApplicationShort">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="newApplicationDataShort" type="tns:NewApplicationDataShort" />
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="NewApplicationDataShort">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="UserCredentials" type="tns:UserCredentials" />
+                    <s:element minOccurs="0" maxOccurs="1" name="ProposalShort" type="tns:ProposalShort" />
+                    <s:element minOccurs="0" maxOccurs="unbounded" name="Goods" type="tns:TypeOfGoods" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Customer" type="tns:Customer" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Address" type="tns:Address" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="ProposalShort">
+                <s:sequence>
+                    <s:element minOccurs="1" maxOccurs="1" name="ClientReference" type="s:string" />
+                    <s:element minOccurs="1" maxOccurs="1" name="CashPrice" type="s:decimal" />
+                </s:sequence>
+            </s:complexType>
+            <s:element name="SubmitNewApplicationShortResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="SubmitNewApplicationShortResult" type="tns:NewApplicationDataResponse" />
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="ProposalEnquiry">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="proposalEnquiryData" type="tns:ProposalEnquiryData" />
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="ProposalEnquiryData">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="UserCredentials" type="tns:UserCredentials" />
+                    <s:element minOccurs="1" maxOccurs="1" name="ProposalID" type="s:int" />
+                    <s:element minOccurs="0" maxOccurs="1" name="ClientReference" type="s:string" />
+                </s:sequence>
+            </s:complexType>
+            <s:element name="ProposalEnquiryResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="ProposalEnquiryResult" type="tns:ProposalEnquiryResponse" />
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="ProposalEnquiryResponse">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="Errors" type="tns:Errors" />
+                    <s:element minOccurs="1" maxOccurs="1" name="ProposalID" type="s:int" />
+                    <s:element minOccurs="0" maxOccurs="1" name="ClientReference" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="ProposalStatus" type="tns:ProposalEnquiry" />
+                    <s:element minOccurs="1" maxOccurs="1" name="CustomerAddress" nillable="true" type="tns:Address" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Snags" type="tns:ArrayOfSnag" />
+                    <s:element minOccurs="0" maxOccurs="1" name="ChecklistConditions" type="tns:ArrayOfChecklistCondition" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Notes" type="tns:ArrayOfNote" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="ProposalEnquiry">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+                </s:sequence>
+                <s:attribute name="IsParked" type="s:boolean" use="required" />
+            </s:complexType>
+            <s:complexType name="ArrayOfSnag">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="unbounded" name="Snag" type="tns:Snag" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="Snag">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Note" type="s:string" />
+                </s:sequence>
+                <s:attribute name="Type" type="s:string" />
+            </s:complexType>
+            <s:complexType name="ArrayOfChecklistCondition">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="unbounded" name="ChecklistCondition" type="tns:ChecklistCondition" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="ChecklistCondition">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+                    <s:element minOccurs="1" maxOccurs="1" name="Satisfied" type="s:boolean" />
+                    <s:element minOccurs="0" maxOccurs="1" name="SatisfiedOn" type="s:string" />
+                </s:sequence>
+                <s:attribute name="Type" type="s:string" />
+            </s:complexType>
+            <s:complexType name="ArrayOfNote">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="unbounded" name="Note" type="tns:Note" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="Note">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="NoteText" type="s:string" />
+                    <s:element minOccurs="1" maxOccurs="1" name="DateTime" type="s:date" />
+                    <s:element minOccurs="0" maxOccurs="1" name="User" type="s:string" />
+                </s:sequence>
+                <s:attribute name="Type" type="s:string" />
+            </s:complexType>
+            <s:element name="SubmitNotificationBatch">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="notificationData" type="tns:NotificationData" />
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="NotificationData">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="UserCredentials" type="tns:UserCredentials" />
+                    <s:element minOccurs="0" maxOccurs="1" name="NotificationBatch" type="tns:NotificationBatch" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="NotificationBatch">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="unbounded" name="Notification" type="tns:Notification" />
+                </s:sequence>
+                <s:attribute name="BatchReference" type="s:string" />
+            </s:complexType>
+            <s:complexType name="Notification">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="ClientReference" type="s:string" />
+                    <s:element minOccurs="1" maxOccurs="1" name="BalanceToFinance" type="s:decimal" />
+                </s:sequence>
+                <s:attribute name="ProposalID" type="s:int" use="optional"/>
+                <s:attribute name="AgreementNumber" type="s:string" use="optional"/>
+            </s:complexType>
+            <s:element name="SubmitNotificationBatchResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="SubmitNotificationBatchResult" type="tns:NotificationResponse" />
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="NotificationResponse">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="Errors" type="tns:Errors" />
+                    <s:element minOccurs="1" maxOccurs="1" name="BatchID" type="s:int" />
+                    <s:element minOccurs="1" maxOccurs="1" name="NumberOfNotificationsAccepted" type="s:int" />
+                    <s:element minOccurs="0" maxOccurs="1" name="NotificationRejections" type="tns:NotificationRejections" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="NotificationRejections">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="unbounded" name="Rejection" type="tns:NotificationRejection" />
+                </s:sequence>
+                <s:attribute name="NumberOfRejections" type="s:int" use="required" />
+            </s:complexType>
+            <s:complexType name="NotificationRejection">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="Reason" type="s:string" />
+                </s:sequence>
+                <s:attribute name="ProposalID" type="s:int" use="optional"/>
+                <s:attribute name="AgreementNumber" type="s:string" use="optional"/>
+                <s:attribute name="ClientReference" type="s:string" />
+            </s:complexType>
+            <s:element name="NotificationBatchEnquiry">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="notificationBatchEnquiryData" type="tns:NotificationBatchEnquiryData" />
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="NotificationBatchEnquiryData">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="UserCredentials" type="tns:UserCredentials" />
+                    <s:element minOccurs="1" maxOccurs="1" name="BatchID" type="s:int" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Reference" type="s:string" />
+                </s:sequence>
+            </s:complexType>
+            <s:element name="NotificationBatchEnquiryResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="NotificationBatchEnquiryResult" type="tns:NotificationBatchEnquiryResponse" />
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="NotificationBatchEnquiryResponse">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="Errors" type="tns:Errors" />
+                    <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+                    <s:element minOccurs="1" maxOccurs="1" name="NumberOfRecords" type="s:int" />
+                    <s:element minOccurs="1" maxOccurs="1" name="NumberProcessed" type="s:int" />
+                </s:sequence>
+            </s:complexType>
+            <s:element name="CancelAgreement">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="cancelAgreementData" type="tns:CancelAgreementData" />
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="CancelAgreementData">
+                <s:sequence>
+                    <s:element minOccurs="1" maxOccurs="1" name="UserCredentials" type="tns:UserCredentials" />
+                    <s:element minOccurs="1" maxOccurs="1" name="Customer" type="tns:Customer" />
+                    <s:element minOccurs="1" maxOccurs="1" name="Agreement" type="tns:Agreement" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="Agreement">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="AgreementNumber" type="s:string" />
+                    <s:element minOccurs="1" maxOccurs="1" name="OriginalLoanAdvance" type="s:decimal" />
+                    <s:element minOccurs="1" maxOccurs="1" name="CancellationAmount" type="s:decimal" />
+                    <s:element minOccurs="1" maxOccurs="1" name="NewLoanAdvance" type="s:decimal" />
+                    <s:element minOccurs="1" maxOccurs="1" name="CancellationType" type="s:string" />
+                    <s:element minOccurs="1" maxOccurs="1" name="ClientRequestReference" type="s:string" />
+                    <s:element minOccurs="0" maxOccurs="1" name="ProposalId" type="s:int" />
+                </s:sequence>
+            </s:complexType>
+            <s:element name="CancelAgreementResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" name="CancelAgreementResult" type="tns:CancelAgreementDataResponse" />
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="CancelAgreementDataResponse">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="Errors" type="tns:Errors" />
+                </s:sequence>
+            </s:complexType>
+            <s:element name="IntroducerResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="introducerResponseData" type="tns:IntroducerResponseData" />
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="IntroducerResponseData">
+                <s:sequence>
+                    <s:element minOccurs="1" maxOccurs="1" name="UserCredentials" type="tns:UserCredentials" />
+                    <s:element minOccurs="1" maxOccurs="1" name="Application" type="tns:Application" />
+                    <s:element minOccurs="1" maxOccurs="1" name="ResponseNote" type="tns:ResponseNote" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="Application">
+                <s:sequence>
+                    <s:element minOccurs="1" maxOccurs="1" name="ProposalId" type="s:int" />
+                    <s:element minOccurs="1" maxOccurs="1" name="ClientRequestReference" type="s:string" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="ResponseNote">
+                <s:sequence>
+                    <s:element minOccurs="1" maxOccurs="1" name="Note" type="s:string" />
+                    <s:element minOccurs="1" maxOccurs="1" name="ContactName" type="tns:ContactName" />
+                    <s:element minOccurs="1" maxOccurs="1" name="Attachment" type="s:base64Binary" />
+                </s:sequence>
+            </s:complexType>
+            <s:complexType name="ContactName">
+                <s:sequence>
+                    <s:element minOccurs="1" maxOccurs="1" name="Forename" type="tns:String2to50" />
+                    <s:element minOccurs="1" maxOccurs="1" name="Surname" type="tns:String2to50" />
+                </s:sequence>
+            </s:complexType>
+            <s:element name="IntroducerResponseResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" name="IntroducerResponseResult" type="tns:IntroducerResponseDataResponse" />
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="IntroducerResponseDataResponse">
+                <s:sequence>
+                    <s:element minOccurs="0" maxOccurs="1" name="Errors" type="tns:Errors" />
+                </s:sequence>
+            </s:complexType>
+      <s:element name="FinanceOptionQuotation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="financeOptionQuotationData" type="tns:FinanceOptionQuotationData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FinanceOptionQuotationData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserCredentials" type="tns:UserCredentials" />
+          <s:element minOccurs="1" maxOccurs="1" name="CashPrice" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Deposit" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="ThirdPartyCharge" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FinanceOptionQuotationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FinanceOptionQuotationResult" type="tns:FinanceOptionQuotationResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FinanceOptionQuotationResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Errors" type="tns:Errors" />
+          <s:element minOccurs="1" maxOccurs="1" name="CashPrice" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Deposit" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="ThirdPartyCharge" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Products" type="tns:ArrayOfProduct" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Product">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ProductName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProductCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductNarrative" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductTerms" type="tns:ArrayOfProductTerm" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfProduct">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Product" type="tns:Product" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ProductTerm">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ProductTermIdentifier" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Term" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="DeferralPeriod" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="Instalment" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="APR" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="InterestCharges" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="DocumentFee" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="DocumentFeeSpread" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SettlementFee" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalChargeForCredit" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalRepayableIncludingDeposit" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="LoanPeriodInMonths" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfProductTerm">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ProductTerm" type="tns:ProductTerm" />
+        </s:sequence>
+      </s:complexType>      
+    </s:schema>
+        <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+            <s:simpleType name="guid">
+                <s:restriction base="s:string">
+                    <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+                </s:restriction>
+            </s:simpleType>
+        </s:schema>
+    </wsdl:types>
+    <wsdl:message name="SubmitNewApplicationSoapIn">
+        <wsdl:part name="parameters" element="tns:SubmitNewApplication" />
+    </wsdl:message>
+    <wsdl:message name="SubmitNewApplicationSoapOut">
+        <wsdl:part name="parameters" element="tns:SubmitNewApplicationResponse" />
+    </wsdl:message>
+    <wsdl:message name="SubmitNewApplicationShortSoapIn">
+        <wsdl:part name="parameters" element="tns:SubmitNewApplicationShort" />
+    </wsdl:message>
+    <wsdl:message name="SubmitNewApplicationShortSoapOut">
+        <wsdl:part name="parameters" element="tns:SubmitNewApplicationShortResponse" />
+    </wsdl:message>
+    <wsdl:message name="ProposalEnquirySoapIn">
+        <wsdl:part name="parameters" element="tns:ProposalEnquiry" />
+    </wsdl:message>
+    <wsdl:message name="ProposalEnquirySoapOut">
+        <wsdl:part name="parameters" element="tns:ProposalEnquiryResponse" />
+    </wsdl:message>
+    <wsdl:message name="SubmitNotificationBatchSoapIn">
+        <wsdl:part name="parameters" element="tns:SubmitNotificationBatch" />
+    </wsdl:message>
+    <wsdl:message name="SubmitNotificationBatchSoapOut">
+        <wsdl:part name="parameters" element="tns:SubmitNotificationBatchResponse" />
+    </wsdl:message>
+    <wsdl:message name="NotificationBatchEnquirySoapIn">
+        <wsdl:part name="parameters" element="tns:NotificationBatchEnquiry" />
+    </wsdl:message>
+    <wsdl:message name="NotificationBatchEnquirySoapOut">
+        <wsdl:part name="parameters" element="tns:NotificationBatchEnquiryResponse" />
+    </wsdl:message>
+    <wsdl:message name="CancelAgreementSoapIn">
+        <wsdl:part name="parameters" element="tns:CancelAgreement" />
+    </wsdl:message>
+    <wsdl:message name="CancelAgreementSoapOut">
+        <wsdl:part name="parameters" element="tns:CancelAgreementResponse" />
+    </wsdl:message>
+    <wsdl:message name="IntroducerResponseSoapIn">
+        <wsdl:part name="parameters" element="tns:IntroducerResponse" />
+    </wsdl:message>
+    <wsdl:message name="IntroducerResponseSoapOut">
+        <wsdl:part name="parameters" element="tns:IntroducerResponseResponse" />
+    </wsdl:message>
+  <wsdl:message name="FinanceOptionQuotationSoapIn">
+    <wsdl:part name="parameters" element="tns:FinanceOptionQuotation" />
+  </wsdl:message>
+  <wsdl:message name="FinanceOptionQuotationSoapOut">
+    <wsdl:part name="parameters" element="tns:FinanceOptionQuotationResponse" />
+  </wsdl:message>
+  <wsdl:portType name="eFinanceSoap">
+        <wsdl:operation name="SubmitNewApplication">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Submit a new proposal.</wsdl:documentation>
+            <wsdl:input message="tns:SubmitNewApplicationSoapIn" />
+            <wsdl:output message="tns:SubmitNewApplicationSoapOut" />
+        </wsdl:operation>
+        <wsdl:operation name="SubmitNewApplicationShort">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Submit a new proposal with limited data.</wsdl:documentation>
+            <wsdl:input message="tns:SubmitNewApplicationShortSoapIn" />
+            <wsdl:output message="tns:SubmitNewApplicationShortSoapOut" />
+        </wsdl:operation>
+        <wsdl:operation name="ProposalEnquiry">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check the status of a proposal.</wsdl:documentation>
+            <wsdl:input message="tns:ProposalEnquirySoapIn" />
+            <wsdl:output message="tns:ProposalEnquirySoapOut" />
+        </wsdl:operation>
+        <wsdl:operation name="SubmitNotificationBatch">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Submit a batch of delivery notifications.</wsdl:documentation>
+            <wsdl:input message="tns:SubmitNotificationBatchSoapIn" />
+            <wsdl:output message="tns:SubmitNotificationBatchSoapOut" />
+        </wsdl:operation>
+        <wsdl:operation name="NotificationBatchEnquiry">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check the status of a notification batch.</wsdl:documentation>
+            <wsdl:input message="tns:NotificationBatchEnquirySoapIn" />
+            <wsdl:output message="tns:NotificationBatchEnquirySoapOut" />
+        </wsdl:operation>
+        <wsdl:operation name="CancelAgreement">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Cancel an agreement.</wsdl:documentation>
+            <wsdl:input message="tns:CancelAgreementSoapIn" />
+            <wsdl:output message="tns:CancelAgreementSoapOut" />
+        </wsdl:operation>
+        <wsdl:operation name="IntroducerResponse">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Submit responses from an Introducer.</wsdl:documentation>
+            <wsdl:input message="tns:IntroducerResponseSoapIn" />
+            <wsdl:output message="tns:IntroducerResponseSoapOut" />
+        </wsdl:operation>
+    <wsdl:operation name="FinanceOptionQuotation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Perform a finance option quotation.</wsdl:documentation>
+      <wsdl:input message="tns:FinanceOptionQuotationSoapIn" />
+      <wsdl:output message="tns:FinanceOptionQuotationSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+    <wsdl:binding name="eFinanceSoap" type="tns:eFinanceSoap">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="SubmitNewApplication">
+            <soap:operation soapAction="http://www.barclays-partnerfinance.com/SubmitNewApplication" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SubmitNewApplicationShort">
+            <soap:operation soapAction="http://www.barclays-partnerfinance.com/SubmitNewApplicationShort" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ProposalEnquiry">
+            <soap:operation soapAction="http://www.barclays-partnerfinance.com/ProposalEnquiry" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SubmitNotificationBatch">
+            <soap:operation soapAction="http://www.barclays-partnerfinance.com/SubmitNotificationBatch" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="NotificationBatchEnquiry">
+            <soap:operation soapAction="http://www.barclays-partnerfinance.com/NotificationBatchEnquiry" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CancelAgreement">
+            <soap:operation soapAction="http://www.barclays-partnerfinance.com/CancelAgreement" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="IntroducerResponse">
+            <soap:operation soapAction="http://www.barclays-partnerfinance.com/IntroducerResponse" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    <wsdl:operation name="FinanceOptionQuotation">
+      <soap:operation soapAction="http://www.barclays-partnerfinance.com/FinanceOptionQuotation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>    
+    </wsdl:binding>
+    <wsdl:binding name="eFinanceSoap1" type="tns:eFinanceSoap">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="SubmitNewApplication">
+            <soap12:operation soapAction="http://www.barclays-partnerfinance.com/SubmitNewApplication" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SubmitNewApplicationShort">
+            <soap12:operation soapAction="http://www.barclays-partnerfinance.com/SubmitNewApplicationShort" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ProposalEnquiry">
+            <soap12:operation soapAction="http://www.barclays-partnerfinance.com/ProposalEnquiry" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SubmitNotificationBatch">
+            <soap12:operation soapAction="http://www.barclays-partnerfinance.com/SubmitNotificationBatch" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="NotificationBatchEnquiry">
+            <soap12:operation soapAction="http://www.barclays-partnerfinance.com/NotificationBatchEnquiry" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CancelAgreement">
+            <soap12:operation soapAction="http://www.barclays-partnerfinance.com/CancelAgreement" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="IntroducerResponse">
+            <soap12:operation soapAction="http://www.barclays-partnerfinance.com/IntroducerResponse" style="document" />
+            <wsdl:input>
+                <soap12:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    <wsdl:operation name="FinanceOptionQuotation">
+      <soap12:operation soapAction="http://www.barclays-partnerfinance.com/FinanceOptionQuotation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+    <wsdl:service name="eFinance">
+        <wsdl:port name="eFinanceSoap" binding="tns:eFinanceSoap">
+            <soap:address location="https://iceua1.barclays-loans.com/WebService/BpfWebService/eFinance.asmx" />
+        </wsdl:port>
+        <wsdl:port name="eFinanceSoap1" binding="tns:eFinanceSoap1">
+            <soap12:address location="https://iceua1.barclays-loans.com/WebService/BpfWebService/eFinance.asmx" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
