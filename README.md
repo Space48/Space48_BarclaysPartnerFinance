@@ -26,7 +26,7 @@ Installation Instructions
 -------------------------
 Just copy and place the contents of this respository into your Magento root folder.
 
-Be mindful that `app/code/community/Space48/BarclaysPartnerFinance/misc/efinance258.wsdl` and `app/code/community/Space48/BarclaysPartnerFinance/misc/wsdl.local.xml` do not exist. You need to create a symbolic link in your environment for the relative files:
+Be mindful that `app/code/community/Space48/BarclaysPartnerFinance/misc/efinance258.wsdl` and `app/code/community/Space48/BarclaysPartnerFinance/misc/wsdl.xml` do not exist. You need to create a symbolic link in your environment for the relative files:
 
     app/code/community/Space48/BarclaysPartnerFinance/misc/efinance258.local.wsdl
     app/code/community/Space48/BarclaysPartnerFinance/misc/efinance258.production.wsdl
