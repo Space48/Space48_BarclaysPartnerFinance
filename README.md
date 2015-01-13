@@ -3,27 +3,42 @@ Space48_BarclaysPartnerFinance
 
 Description
 -----------
-- rewrites any catalog category urls into a SEO friendly format
-- controls category and category-meta titles and descriptions 
-- controls canonical urls
+The enables the store to allow payment via Barclays Partner Finance.
+
+We present a new payment method that once selected forwards the user to the Barclays website to complete a finance application form.
+
+The module also manages the order process as per the Barclays Partner Finance order flow.
 
 Requirements
 ------------
-- PHP >= 5.2.0
+- PHP >= 5.3.0
 - Mage_Core
 
 
 Compatibility
 -------------
-- Magento >= 1.4
+- Magento CE >= 1.9
+- Magento EE >= 1.13
+
+May also be compatible with older versions too, however this should be subject to testing.
 
 Installation Instructions
 -------------------------
+Just copy and place the contents of this respository into your Magento root folder.
 
+Be mindful that app/code/community/Space48/BarclaysPartnerFinance/misc/efinance258.wsdl and app/code/community/Space48/BarclaysPartnerFinance/misc/wsdl.local.xml do not exist. You need to create a symbolic link in your environment for the relative files:
+
+- /home/shahbaz/Projects/bpf/httpdocs/app/code/community/Space48/BarclaysPartnerFinance/misc/efinance258.local.wsdl
+- /home/shahbaz/Projects/bpf/httpdocs/app/code/community/Space48/BarclaysPartnerFinance/misc/efinance258.production.wsdl
+- /home/shahbaz/Projects/bpf/httpdocs/app/code/community/Space48/BarclaysPartnerFinance/misc/efinance258.staging.wsdl
+
+- /home/shahbaz/Projects/bpf/httpdocs/app/code/community/Space48/BarclaysPartnerFinance/misc/wsdl.local.wsdl
+- /home/shahbaz/Projects/bpf/httpdocs/app/code/community/Space48/BarclaysPartnerFinance/misc/wsdl.production.wsdl
+- /home/shahbaz/Projects/bpf/httpdocs/app/code/community/Space48/BarclaysPartnerFinance/misc/wsdl.staging.wsdl
 
 Uninstallation
 --------------
-
+For now, its best just to disable the payment gateway in the system configuration until we can confirm that an uninstallation will not cause issues for legacy orders.
 
 
 Copyright
