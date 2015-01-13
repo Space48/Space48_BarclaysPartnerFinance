@@ -3,16 +3,15 @@
 # Requested paths to exclude from ignore:
 #
 # app/etc/modules/Space48_BarclaysPartnerFinance.xml
-# 
 # app/code/community/Space48/BarclaysPartnerFinance/
-# 
 # app/design/adminhtml/default/default/layout/space48/bpf.xml
 # app/design/adminhtml/default/default/template/space48/bpf/
-# 
 # app/design/frontend/base/default/layout/space48/bpf.xml
 # app/design/frontend/base/default/template/space48/bpf/
-# 
 # app/locale/en_GB/template/email/space48_bpf/
+# lib/Space48/BarclaysPartnerFinance/
+# README.md
+# 
 
 /*
 !/app
@@ -72,5 +71,10 @@
 !/app/locale/en_GB/template/email
 /app/locale/en_GB/template/email/*
 !/app/locale/en_GB/template/email/space48_bpf
+!/lib
+/lib/*
+!/lib/Space48
+/lib/Space48/*
+!/lib/Space48/BarclaysPartnerFinance
+!/README.md
 !.gitignore
-!README.md
