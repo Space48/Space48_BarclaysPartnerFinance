@@ -9,9 +9,9 @@
 # app/design/frontend/base/default/layout/space48/bpf.xml
 # app/design/frontend/base/default/template/space48/bpf/
 # app/locale/en_GB/template/email/space48_bpf/
+# docs/space48_bpf/
 # lib/Space48/BarclaysPartnerFinance/
 # README.md
-# 
 
 /*
 !/app
@@ -71,6 +71,9 @@
 !/app/locale/en_GB/template/email
 /app/locale/en_GB/template/email/*
 !/app/locale/en_GB/template/email/space48_bpf
+!/docs
+/docs/*
+!/docs/space48_bpf
 !/lib
 /lib/*
 !/lib/Space48

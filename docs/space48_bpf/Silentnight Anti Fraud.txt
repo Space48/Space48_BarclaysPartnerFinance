@@ -1,0 +1,89 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bar="http://www.barclays-partnerfinance.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <bar:SubmitNewApplicationShort>
+         <!--Optional:-->
+         <bar:newApplicationDataShort>
+            <!--Optional:-->
+            <bar:UserCredentials>
+               <!--Optional:-->
+               <bar:LoginName>SilentnightEF@icet1</bar:LoginName>
+               <!--Optional:-->
+               <bar:Password>Passw0rd</bar:Password>
+            </bar:UserCredentials>
+            <!--Optional:-->
+            <bar:ProposalShort>
+               <bar:ClientReference>Huw2</bar:ClientReference>
+               <bar:CashPrice>1000</bar:CashPrice>
+            </bar:ProposalShort>
+            <!--Zero or more repetitions:-->
+            <bar:Goods Type="BD2">
+               <!--Optional:-->
+               <bar:Description>Matress</bar:Description>
+               <bar:Quantity>1</bar:Quantity>
+            </bar:Goods>
+            <!--Optional:-->
+            <bar:Customer>
+               <!--Optional:-->
+               <bar:Title>Mrs</bar:Title>
+               <!--Optional:-->
+               <bar:Forename>Gail</bar:Forename>
+               <bar:Initial></bar:Initial>
+               <!--Optional:-->
+               <bar:Surname>Goang</bar:Surname>
+               <!--Optional:-->
+               <bar:EmailAddress>huw.phillips@barclayscorp.com</bar:EmailAddress>
+               <!--Optional:-->
+               <bar:HomePhoneNumber></bar:HomePhoneNumber>
+               <!--Optional:-->
+               <bar:WorkPhoneNumber></bar:WorkPhoneNumber>
+               <!--Optional:-->
+               <bar:MobileNumber>02920333333</bar:MobileNumber>
+            </bar:Customer>
+            <!--Optional:-->
+            <bar:Address>
+               <!--Optional:-->
+               <bar:HouseNumber></bar:HouseNumber>
+               <!--Optional:-->
+               <bar:HouseName>Target House</bar:HouseName>
+               <!--Optional:-->
+               <bar:Flat></bar:Flat>
+               <!--Optional:-->
+               <bar:Street>cowbridge Raod East</bar:Street>
+               <!--Optional:-->
+               <bar:District></bar:District>
+               <!--Optional:-->
+               <bar:Town>Cardiff</bar:Town>
+               <!--Optional:-->
+               <bar:County>South Glamorgan</bar:County>
+               <!--Optional:-->
+               <bar:Postcode>CF119AU</bar:Postcode>
+            </bar:Address>
+            <!--Optional:-->
+            <bar:Delivery>
+               <!--Optional:-->
+               <bar:DeliveryAddress>
+                  <!--Optional:-->
+                  <bar:HouseNumber></bar:HouseNumber>
+                  <!--Optional:-->
+                  <bar:HouseName>Cadarn House</bar:HouseName>
+                  <!--Optional:-->
+                  <bar:Flat></bar:Flat>
+                  <!--Optional:-->
+                  <bar:Street>Avenue Business Park</bar:Street>
+                  <!--Optional:-->
+                  <bar:District></bar:District>
+                  <!--Optional:-->
+                  <bar:Town>Cardiff</bar:Town>
+                  <!--Optional:-->
+                  <bar:County>South Glamorgan</bar:County>
+                  <!--Optional:-->
+                  <bar:Postcode>CF238FF</bar:Postcode>
+               </bar:DeliveryAddress>
+               <!--Optional:-->
+               <bar:DeliveryOption>2</bar:DeliveryOption>
+            </bar:Delivery>
+         </bar:newApplicationDataShort>
+      </bar:SubmitNewApplicationShort>
+   </soapenv:Body>
+</soapenv:Envelope>
