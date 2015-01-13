@@ -28,13 +28,13 @@ Just copy and place the contents of this respository into your Magento root fold
 
 Be mindful that app/code/community/Space48/BarclaysPartnerFinance/misc/efinance258.wsdl and app/code/community/Space48/BarclaysPartnerFinance/misc/wsdl.local.xml do not exist. You need to create a symbolic link in your environment for the relative files:
 
-- /home/shahbaz/Projects/bpf/httpdocs/app/code/community/Space48/BarclaysPartnerFinance/misc/efinance258.local.wsdl
-- /home/shahbaz/Projects/bpf/httpdocs/app/code/community/Space48/BarclaysPartnerFinance/misc/efinance258.production.wsdl
-- /home/shahbaz/Projects/bpf/httpdocs/app/code/community/Space48/BarclaysPartnerFinance/misc/efinance258.staging.wsdl
+    app/code/community/Space48/BarclaysPartnerFinance/misc/efinance258.local.wsdl
+    app/code/community/Space48/BarclaysPartnerFinance/misc/efinance258.production.wsdl
+    app/code/community/Space48/BarclaysPartnerFinance/misc/efinance258.staging.wsdl
 
-- /home/shahbaz/Projects/bpf/httpdocs/app/code/community/Space48/BarclaysPartnerFinance/misc/wsdl.local.wsdl
-- /home/shahbaz/Projects/bpf/httpdocs/app/code/community/Space48/BarclaysPartnerFinance/misc/wsdl.production.wsdl
-- /home/shahbaz/Projects/bpf/httpdocs/app/code/community/Space48/BarclaysPartnerFinance/misc/wsdl.staging.wsdl
+    app/code/community/Space48/BarclaysPartnerFinance/misc/wsdl.local.wsdl
+    app/code/community/Space48/BarclaysPartnerFinance/misc/wsdl.production.wsdl
+    app/code/community/Space48/BarclaysPartnerFinance/misc/wsdl.staging.wsdl
 
 Uninstallation
 --------------
