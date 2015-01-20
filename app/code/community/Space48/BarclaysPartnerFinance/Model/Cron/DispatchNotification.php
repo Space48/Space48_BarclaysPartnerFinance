@@ -5,12 +5,12 @@ class Space48_BarclaysPartnerFinance_Model_Cron_DispatchNotification
 {
     /**
      * this cron will gather all orders that have been dispatched
-     * and it is not required that the bpf service is notified
+     * and it is required that the bpf service is notified
      * of their dispatched status
      *
      * @return $this
      */
-    public function processDispatchNotifications()
+    public function run()
     {
         // get orders
         $orders = $this->_getOrders();

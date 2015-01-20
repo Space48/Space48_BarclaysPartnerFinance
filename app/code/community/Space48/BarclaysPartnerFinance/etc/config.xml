@@ -260,6 +260,16 @@
         </routers>
     </frontend>
     
+    <!-- CRON -->
+    <crontab>
+        <jobs>
+            <space48_bpf_dispatch_notifications>
+                <schedule><cron_expr>25,55 * * * *</cron_expr></schedule>
+                <run><model>space48_bpf/cron_dispatchNotification::run</model></run>
+            </space48_bpf_dispatch_notifications>
+        </jobs>
+    </crontab>
+    
     <!-- DEFAULT -->
     <default>
         <payment>
